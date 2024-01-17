@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../components/shop_item.dart';
+import '../models/card.dart';
+
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
 
@@ -8,6 +11,34 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  List<ShopCard> cards = [
+    ShopCard(
+        name: 'Asics',
+        price: '100',
+        imagePath: 'lib/images/asics.png',
+        description: 'cool asics'),
+    ShopCard(
+        name: 'Adidas',
+        price: '120',
+        imagePath: 'lib/images/adidas.png',
+        description: 'cool adidas'),
+    ShopCard(
+        name: 'Lacoste',
+        price: '200',
+        imagePath: 'lib/images/lacoste.png',
+        description: 'cool lacoste'),
+    ShopCard(
+        name: 'Yeezy',
+        price: '250',
+        imagePath: 'lib/images/yeezy.png',
+        description: 'cool yeezy'),
+    ShopCard(
+        name: 'Nike',
+        price: '300',
+        imagePath: 'lib/images/nike.png',
+        description: 'cool nike')
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -60,16 +91,15 @@ class _ShopPageState extends State<ShopPage> {
         const SizedBox(
           height: 10,
         ),
-        // Expanded(
-        //     child: ListView.builder(itemBuilder: (context, index) {
-        //       ShopCard card = ShopCard(name: 'Asics',
-        //           price: '1000',
-        //           imagePath: 'lib/images/asics.png',
-        //           description: 'cool shoe');
-        //       return ShopItem(card: card);
-        //     })
-        // )
+        Expanded(
+            child: ListView.builder(
+                itemCount: cards.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return ShopItem(card: cards[0]);
+                }))
       ],
+
     );
   }
 }
